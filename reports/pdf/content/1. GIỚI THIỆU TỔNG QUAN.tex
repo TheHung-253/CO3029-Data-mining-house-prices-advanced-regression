@@ -1,9 +1,22 @@
 \section{Giới thiệu tổng quan}
 \subsection{Đặt vấn đề và Lý do chọn đề tài}
 % Tầm quan trọng của việc định giá bất động sản và mục tiêu ứng dụng Data Mining để giải quyết.
-
+Bất động sản từ lâu đã là một trong những kênh đầu tư và tài sản quan trọng với hầu hết mọi người. Tuy nhiên, việc xác định giá trị thực sự của một căn nhà không phải lúc nào cũng đơn giản - giá nhà phụ thuộc vào rất nhiều yếu tố khác nhau, từ diện tích và chất lượng xây dựng cho đến vị trí, tiện nghi xung quanh, và cả thời điểm giao dịch. Vì vậy, việc định giá một căn nhà là một việc rất khó khăn với những người thiếu kinh nghiệm.
+Vì vậy, nhóm đã chọn đề tài này. Bằng cách ứng dụng các kỹ thuật Data Mining và Machine Learning, nhóm kỳ vọng có thể xây dựng một mô hình dự đoán giá nhà dựa trên dữ liệu thực tế.
 \subsection{Mô tả tập dữ liệu}
 % Nguồn dữ liệu (Kaggle), số lượng mẫu, và ý nghĩa của một số thuộc tính quan trọng ban đầu (như SalePrice, GrLivArea, OverallQual).
-
+Tập dữ liệu được sử dụng đến từ cuộc thi "House Prices: Advanced Regression Techniques" trên Kaggle, tập trung vào thị trường bất động sản tại thành phố Ames, Iowa. Tập dữ liệu bao gồm 2919 mẫu, gồm 1460 mẫu trong tập huấn luyện và 1459 mẫu trong tập kiểm tra, mỗi mẫu tương ứng với một căn tại thành phố Ames, Iowa, Hoa Kỳ, được giao dịch trong giai đoạn 2006–2010. Điểm đặc biệt của tập dữ liệu này là nó có tới 79 thuộc tính đầu vào, bao gồm cả biến định lượng lẫn định tính, phản ánh gần như mọi khía cạnh của một căn nhà. Một số thực tính quan trọng:
+\begin{itemize}
+\item[-] \textit{SalePrice:} Đây là giá bán thực tế của căn nhà - con số mà chúng ta cần dự đoán.
+\item[-] \textit{OverallQual (Chất lượng tổng thể):} Một con số từ 1 đến 10 đánh giá xem căn nhà còn mới và tốt hay không. Đây thường là yếu tố "quyết định" nhất đến giá tiền.
+\item[-] \textit{GrLivArea (Diện tích sử dụng):} Diện tích phần không gian sống trên mặt đất. Nhà càng rộng thì giá thường càng cao.
+\item[-] \textit{YearBuilt:} Năm căn nhà được xây dựng, giúp ta biết được độ cũ/mới của công trình.
+\end{itemize}
 \subsection{Mục tiêu cụ thể}
 % Tìm ra yếu tố cốt lõi ảnh hưởng đến giá nhà và xây dựng mô hình dự đoán.
+Nghiên cứu này tập trung vào việc thực hiện quy trình khai phá dữ liệu toàn diện nhằm đạt được các mục tiêu sau:
+\begin{enumerate}
+\item \textbf{Tiền xử lý và Feature Engineering:} Giải quyết các vấn đề về dữ liệu thiếu, nhiễu, và chuẩn hóa phân phối của dữ liệu.
+\item \textbf{Xây dựng mô hình dự đoán:} Thử nghiệm và đánh giá hiệu năng của các thuật toán khác nhau như Linear Regression, Random Forest... .
+\item \textbf{Phân tích tương quan:} Xác định và đánh giá các yếu tố cốt lõi có tác động mạnh mẽ nhất đến giá trị bất động sản.
+\end{enumerate}
