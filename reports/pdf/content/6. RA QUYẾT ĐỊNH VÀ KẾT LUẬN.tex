@@ -1,28 +1,29 @@
 \clearpage
 \section{Ra quyết định và kết luận}
+
 \subsection{Tư vấn chiến lược kinh doanh}
 %Dành cho Người Bán / Nhà đầu tư (House Flippers): Tập trung nâng cấp yếu tố nào để tối ưu ROI (ví dụ: chất lượng vật liệu thay vì cơi nới diện tích).
 %Dành cho Người Mua nhà: Lời khuyên tối ưu ngân sách khi chọn mua nhà.
-Từ những tri thức được khai phá từ mô hình học máy, nhóm đề xuất các chiến lược kinh doanh thực tiễn cho các đối tượng tham gia thị trường bất động sản:
+Từ những tri thức được khai phá từ mô hình học máy, đặc biệt là sự thống trị tuyệt đối của biến kết hợp \texttt{Qual\_x\_TotalSF} (chiếm 85\% mức độ quan trọng), nhóm đề xuất các chiến lược kinh doanh thực tiễn sau:
 
 \begin{itemize}
-    \item[-] \textbf{Dành cho Người Bán và Nhà đầu tư (House Flippers):} Thuật toán chỉ ra rằng \texttt{OverallQual} (Chất lượng vật liệu và hoàn thiện) tác động đến giá bán mạnh hơn diện tích. Thay vì tốn chi phí và thời gian xin giấy phép để cơi nới không gian sinh hoạt (\texttt{GrLivArea}), nhà đầu tư nên tối ưu tỷ suất hoàn vốn (ROI) bằng cách phân bổ ngân sách cho việc nâng cấp ngoại thất, tân trang nội thất, và sử dụng vật liệu cao cấp. Một căn nhà diện tích vừa phải nhưng có thiết kế và chất lượng nội thất xuất sắc sẽ mang lại biên độ lợi nhuận cao hơn.
+    \item[-] \textbf{Dành cho Người Bán và Nhà đầu tư (House Flippers):} Thuật toán chỉ ra rằng giá trị căn nhà được quyết định phần lớn bởi sự kết hợp tỷ lệ thuận giữa Chất lượng và Tổng diện tích. Thay vì tốn chi phí và thời gian xin giấy phép để cơi nới không gian sinh hoạt, nhà đầu tư nên tối ưu tỷ suất hoàn vốn (ROI) bằng cách phân bổ ngân sách để nâng cấp tối đa chất lượng vật liệu, ngoại thất và nội thất trên nền diện tích sẵn có. Một căn nhà có diện tích vừa phải nhưng vật liệu hoàn thiện cao cấp sẽ mang lại biên độ lợi nhuận và khả năng thanh khoản cao nhất.
     
-    \item[-] \textbf{Dành cho Người Mua nhà:} Đối với những gia đình hoặc cá nhân có ngân sách hạn hẹp nhưng muốn tối ưu hóa không gian sống, chiến lược tốt nhất là tìm kiếm những căn nhà có diện tích lớn (\texttt{GrLivArea} cao) nhưng chất lượng hiện tại ở mức trung bình hoặc thấp (\texttt{OverallQual} thấp). Vì những căn nhà này bị định giá thấp hơn rất nhiều so với giá trị không gian thực của chúng, người mua có thể chốt giao dịch với giá hời, sau đó tự thực hiện quá trình cải tạo và tân trang dần dần để nâng tầm giá trị căn nhà trong tương lai.
+    \item[-] \textbf{Dành cho Người Mua nhà:} Đối với những gia đình có ngân sách hạn hẹp nhưng ưu tiên sự rộng rãi, chiến lược tối ưu là tìm mua những căn nhà có thông số diện tích tốt (\texttt{TotalSF}, \texttt{GrLivArea} cao) nhưng chất lượng hiện tại ở mức thấp hoặc trung bình. Vì biến kết hợp \texttt{Qual\_x\_TotalSF} đang ở mức thấp, căn nhà sẽ được định giá rẻ. Người mua có thể chốt giao dịch với giá hời, sau đó tự cải tạo nâng cấp chất lượng dần dần để kích hoạt sự tăng trưởng bứt phá về giá trị tài sản trong tương lai.
 \end{itemize}
 
 \subsection{Kết luận}
-Dự án đã hoàn thành các mục tiêu được đặt ra ở Chương 1. Nhóm đã xây dựng thành công một pipelive khai phá dữ liệu hoàn chỉnh: từ khâu tiền xử lý, làm sạch và loại bỏ nhiễu, đến việc huấn luyện mô hình cơ sở (Linear Regression) và mô hình nâng cao (Random Forest). \medskip
+Dự án đã hoàn thành các mục tiêu được đặt ra ở Chương 1. Nhóm đã xây dựng thành công một pipeline khai phá dữ liệu hoàn chỉnh: từ khâu tiền xử lý, làm sạch, kỹ nghệ đặc trưng (Feature Engineering), đến việc huấn luyện và đánh giá mô hình.\medskip
 
-Mô hình Random Forest đã chứng minh được sự vượt trội trong việc xử lý tập dữ liệu nhà ở nhiều chiều, giảm thiểu đáng kể sai số dự đoán so với mô hình cơ sở. Quan trọng hơn, thông qua kỹ thuật giải thích mô hình, đồ án đã chuyển hóa các con số khô khan thành những tư vấn chiến lược mang tính thực tiễn cao, hỗ trợ trực tiếp quá trình ra quyết định cho cả người mua và người bán.
+Kết quả cho thấy sự vượt trội hoàn toàn của thuật toán Random Forest so với mô hình cơ sở (Linear Regression). Mô hình nâng cao đã tăng mức độ giải thích dữ liệu ($R^2$) từ $0.5402$ lên $0.8256$, đồng thời giảm mạnh sai số dự đoán (RMSE) từ $58,137.54$ USD xuống chỉ còn $32,218.65$ USD. Đặc biệt, hệ thống đã chứng minh tính tối ưu bằng cách rút gọn từ hơn 80 biến số thô ban đầu xuống chỉ cần tập trung vào top 6 thông số quan trọng nhất (nhóm diện tích và chất lượng) mà vẫn đảm bảo độ dự đoán chính xác cao. Thông qua dự án, các con số khô khan đã được chuyển hóa thành những tư vấn chiến lược mang tính thực tiễn, hỗ trợ trực tiếp quá trình ra quyết định trên thị trường.
 
 \subsection{Hướng phát triển tương lai}
-Dù mô hình hiện tại đã đạt được độ chính xác tốt, hệ thống vẫn còn nhiều không gian để cải thiện và mở rộng nếu có thêm thời gian và nguồn lực:
+Dù mô hình hiện tại đã đạt được hiệu năng rất tốt, hệ thống vẫn còn không gian để cải thiện và mở rộng nếu có thêm thời gian và nguồn lực:
 
 \begin{itemize}
     \item[-] \textbf{Thử nghiệm các thuật toán tiên tiến hơn:} Triển khai các thuật toán Gradient Boosting mạnh mẽ như XGBoost, LightGBM hoặc CatBoost, kết hợp với các kỹ thuật tinh chỉnh siêu tham số (Hyperparameter Tuning bằng GridSearchCV hoặc Optuna) để tiếp tục ép mức sai số dự đoán xuống mức thấp nhất.
     
-    \item[-] \textbf{Bổ sung dữ liệu không gian và kinh tế vĩ mô:} Giá bất động sản chịu ảnh hưởng lớn bởi yếu tố ngoại cảnh. Hệ thống có thể được làm giàu dữ liệu bằng cách thu thập thêm các thông tin về tọa độ địa lý (khoảng cách đến trung tâm, trường học, bệnh viện) hoặc các chỉ số kinh tế (lãi suất vay thế chấp tại thời điểm bán).
+    \item[-] \textbf{Bổ sung dữ liệu không gian và kinh tế vĩ mô:} Làm giàu dữ liệu (Data Enrichment) bằng cách thu thập thêm các thông tin về tọa độ địa lý (khoảng cách đến trung tâm, trường học, bệnh viện) hoặc các chỉ số kinh tế (lãi suất vay thế chấp, lạm phát tại thời điểm bán).
     
-    \item[-] \textbf{Phát triển ứng dụng Web (End-to-End):} Tích hợp mô hình đã huấn luyện (pickle/joblib) vào một hệ thống Web API (sử dụng FastAPI, Flask, hoặc tích hợp Node.js/React theo hướng quan tâm của nhóm) để người dùng có thể trực tiếp nhập thông số và nhận định giá theo thời gian thực.
+    \item[-] \textbf{Phát triển ứng dụng Web (End-to-End):} Đóng gói mô hình đã huấn luyện (pickle/joblib) và tích hợp vào một hệ thống Web API (sử dụng FastAPI, Flask, hoặc Node.js/React) để cung cấp công cụ định giá nhà tự động, cho phép người dùng nhập thông số và nhận kết quả dự đoán theo thời gian thực.
 \end{itemize}

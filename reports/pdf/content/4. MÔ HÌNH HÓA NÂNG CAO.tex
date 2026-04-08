@@ -2,7 +2,7 @@
 \section{Mô hình hóa nâng cao} 
 \subsection{Lựa chọn kỹ thuật}
 %Giới thiệu thuật toán học máy tập hợp (Ensemble Learning) - Random Forest Regressor đa biến.
-Trong giai đoạn mô hình hóa nâng cao, chúng em lựa chọn Random Forest Regressor – một thuật toán thuộc nhóm Ensemble Learning. Random Forest hoạt động bằng cách xây dựng nhiều cây quyết định (Decision Trees) trên các tập dữ liệu con khác nhau, sau đó kết hợp kết quả dự đoán của chúng để đưa ra giá trị cuối cùng
+Trong giai đoạn mô hình hóa nâng cao, nhóm lựa chọn Random Forest Regressor – một thuật toán thuộc nhóm Ensemble Learning. Random Forest hoạt động bằng cách xây dựng nhiều cây quyết định (Decision Trees) trên các tập dữ liệu con khác nhau, sau đó kết hợp kết quả dự đoán của chúng để đưa ra giá trị cuối cùng
 \subsubsection{Cơ sở lựa chọn:}
 \begin{itemize}
     \item[-] \textbf{Khả năng nắm bắt quan hệ phi tuyến tính:} Khác với hồi quy tuyến tính đơn giản, Random Forest có thể mô hình hóa các mối quan hệ phức tạp và phi tuyến tính giữa nhiều đặc trưng và giá nhà.
@@ -20,7 +20,7 @@ Trong giai đoạn mô hình hóa nâng cao, chúng em lựa chọn Random Fores
 %Các thiết lập tham số và quá trình fit mô hình.
 \subsubsection{Thiết lập tham số:}
 \begin{itemize}
-    \item[-] Mô hình được khởi tạo với RandomForestRegressor gồm 100 cây quyết định (decision tree) (\verb|n_estimators = 100|).
+    \item[-] Mô hình được khởi tạo với Random Forest Regressor gồm 100 cây quyết định (decision tree) (\verb|n_estimators = 100|).
     \item[-] Sử dụng \verb|random_state = 42| để đảm bảo tính tái lập kết quả.
     \item[-] Tham số \verb|n_jobs = -1| cho phép tận dụng toàn bộ lõi CPU để tăng tốc độ huấn luyện.
 \end{itemize}
@@ -31,7 +31,7 @@ Trong giai đoạn mô hình hóa nâng cao, chúng em lựa chọn Random Fores
     \caption{Heatmap tương quan giữa các thành phần với SalePrice}
 \end{figure}
 \begin{enumerate}
-    \item \textbf{Chọn đặc trưng:} Dựa trên phân tích tương quan, chúng tôi lựa chọn các biến có hệ số tương quan cao với SalePrice như:
+    \item \textbf{Chọn đặc trưng:} Dựa trên phân tích tương quan, nhóm lựa chọn các biến có hệ số tương quan cao với SalePrice như:
     \begin{itemize}
         \item[-] Qual\_x\_TotalSF (0.82)
         \item[-] Log\_GrLivArea (0.73)
@@ -58,7 +58,7 @@ Trong giai đoạn mô hình hóa nâng cao, chúng em lựa chọn Random Fores
 \end{itemize}
 
 \subsubsection{Phân tích độ quan trọng đặc trưng:}
-Sau khi huấn luyện, chúng tôi sử dụng thuộc tính feature\_importances\_ để xác định mức độ đóng góp của từng đặc trưng vào mô hình.
+Sau khi huấn luyện, nhóm sử dụng thuộc tính feature\_importances\_ để xác định mức độ đóng góp của từng đặc trưng vào mô hình.
 \begin{figure}[H]
     \centering
     \includegraphics[width=1\linewidth]{images/advanced_model/feature_importances.png}
@@ -79,7 +79,7 @@ Sau khi huấn luyện, chúng tôi sử dụng thuộc tính feature\_importanc
 \subsubsection{Kết quả đánh giá:}
 \begin{itemize}
     \item[-] RMSE của RandomForest: \$32,201.12
-    \item[-] RMSE của Baseline (Lỉnear Regression): \$58,137.54
+    \item[-] RMSE của Baseline (Linear Regression): \$58,137.54
     \item[-] Mô hình RandomForest đã giảm \$26,000 so với mô hình cơ sở.
 \end{itemize}
 \subsubsection{Nhận xét:}

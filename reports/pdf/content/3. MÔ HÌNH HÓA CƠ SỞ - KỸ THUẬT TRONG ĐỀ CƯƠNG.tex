@@ -2,8 +2,9 @@
 \section{Mô hình hoá cơ sở - kỹ thuật trong đề cương}
 \subsection{Lựa chọn thuật toán}
 %Mô hình Hồi quy tuyến tính (Linear Regression) áp dụng trên đặc trưng đơn (ví dụ: GrLivArea). Đây là phần đáp ứng yêu cầu dùng thuật toán trong đề cương môn học.
-Trong quá trình xây dựng mô hình cơ sở, chúng em lựa chọn \textbf{Hồi quy tuyến tính đơn giản (Simple Linear Regression)}. Đây là một thuật toán nền tảng trong học máy, thường được sử dụng để thiết lập baseline trước khi thử nghiệm các mô hình phức tạp hơn.
-Chúng em sẽ sử dụng Heatmap tương quan để quan sát sự tương quan giữa các thành phần với SalePrice.
+Trong quá trình xây dựng mô hình cơ sở, nhóm lựa chọn \textbf{Hồi quy tuyến tính đơn giản (Simple Linear Regression)}. Đây là một thuật toán nền tảng trong học máy, thường được sử dụng để thiết lập baseline trước khi thử nghiệm các mô hình phức tạp hơn. \medskip
+
+Nhóm sẽ sử dụng Heatmap tương quan để quan sát sự tương quan giữa các thành phần với SalePrice.
 \begin{figure}[H]
     \centering
     \includegraphics[width=1\linewidth]{images/baseline_model/Heatmap.png}
@@ -12,8 +13,8 @@ Chúng em sẽ sử dụng Heatmap tương quan để quan sát sự tương qua
 Sau khi quan sát biểu đồ Heatmap thì một số biến có độ tương quan với SalePrice vượt ngưỡng 0.7 là: Qual\_x\_TotalSF (0,82), Log\_GrLivArea (0.73), Log\_TotalSF (0.81), TotalSF (0.78), GrLivArea (0.7), OverallQual (0.82).
 \subsubsection{Cơ sở lựa chọn:}
 \begin{itemize}
-    \item[-] Qua phân tích biểu đồ tương quan, nhiều biến có hệ số tương quan cao với SalePrice như OverallQual, TotalSF, Log\_TotalSF. Tuy nhiên, các biến này phần lớn là kết quả của quá trình tiền xử lý hoặc kết hợp nhiều đặc trưng. Để đảm bảo tính đơn giản, trực quan và dễ diễn giải, chúng em đã lựa chọn GrLivArea - một đặc trưng gốc phản ánh diện tích sinh hoạt
-    \item[-] Chúng em sử dụng thêm biểu đồ phân tán (scatter plot) giữa GrLivArea và SalePrice để minh họa xu hướng tuyến tình rõ rệt: khi diện tích sinh hoạt càng lớn thì giá bán nhà càng cao.
+    \item[-] Qua phân tích biểu đồ tương quan, nhiều biến có hệ số tương quan cao với SalePrice như OverallQual, TotalSF, Log\_TotalSF. Tuy nhiên, các biến này phần lớn là kết quả của quá trình tiền xử lý hoặc kết hợp nhiều đặc trưng. Để đảm bảo tính đơn giản, trực quan và dễ diễn giải, nhóm đã lựa chọn GrLivArea - một đặc trưng gốc phản ánh diện tích sinh hoạt
+    \item[-] Nhóm sau đó sử dụng thêm biểu đồ phân tán (scatter plot) giữa GrLivArea và SalePrice để minh họa xu hướng tuyến tính rõ rệt: khi diện tích sinh hoạt càng lớn thì giá bán nhà càng cao.
 \end{itemize}
 \begin{figure}[H]
     \centering
@@ -21,7 +22,7 @@ Sau khi quan sát biểu đồ Heatmap thì một số biến có độ tương 
     \caption{Tuyến tính giữa GrLivArea và SalePrice}
 \end{figure}
 \begin{itemize}
-    \item[-] Do mối quan hệ tuyến tính nổi bật, chúng em lựa chọn \textbf{Hồi quy tuyến tính đơn giản (Simple Linear Regression)} làm mô hình cơ sở.
+    \item[-] Do mối quan hệ tuyến tính nổi bật, nhóm lựa chọn \textbf{Hồi quy tuyến tính đơn giản (Simple Linear Regression)} làm mô hình cơ sở.
     \item[-] Đây là thuật toán nền tảng, dễ triển khai và dễ diễn giải, phù hợp để thiết lập baseline trước khi thử nghiệm các mô hình phức tạp hơn.
 \end{itemize}
 \subsubsection{Ý nghĩa của việc chọn mô hình cơ sở:}
@@ -42,7 +43,7 @@ Sau khi quan sát biểu đồ Heatmap thì một số biến có độ tương 
     \caption{Chia Dataset thành Training và Validation set}
 \end{figure}
 \begin{itemize}
-    \item[-] Sau khi thực hiện chia dữ liệu thành các tập training và validation thì chúng em sẽ đưa dữ liệu vào mô hình huấn luyện.
+    \item[-] Sau khi thực hiện chia dữ liệu thành các tập training và validation thì nhóm đưa dữ liệu vào mô hình để huấn luyện.
 \end{itemize}
 \begin{figure}[H]
     \centering
@@ -54,7 +55,7 @@ Sau khi quan sát biểu đồ Heatmap thì một số biến có độ tương 
 \end{itemize}
 \subsubsection{Trực quan hóa kết quả mô hình:}
 \begin{itemize}
-    \item[-] Để kiểm chứng hiệu quả của mô hình hồi quy tuyến tính đơn giản, chúng em biểu diễn đường hồi quy (regression line) trên tập kiểm định và phân tích sai số qua biểu đồ sai số (residual plot).
+    \item[-] Để kiểm chứng hiệu quả của mô hình hồi quy tuyến tính đơn giản, nhóm biểu diễn đường hồi quy (regression line) trên tập kiểm định và phân tích sai số qua biểu đồ sai số (residual plot).
 \end{itemize}
 \begin{figure}[H]
     \includegraphics[width=1\linewidth]{images/baseline_model/RegressionLine.png}
@@ -66,7 +67,7 @@ Sau khi quan sát biểu đồ Heatmap thì một số biến có độ tương 
 \end{figure}
 \subsubsection{Kết quả đánh giá:}
 \begin{itemize}
-    \item[-] Chúng em sẽ sử dụng công thức RMSE (Root Mean Squared Error) để đo lường độ lệch trung bình giữa giá trị dự đoán và giá trị thực tế và công thức R-squared để nhận biết mô hình giải thích được bao nhiêu phần trăm biến thiên của dữ liệu.
+    \item[-] Nhóm sẽ sử dụng công thức RMSE (Root Mean Squared Error) để đo lường độ lệch trung bình giữa giá trị dự đoán và giá trị thực tế và công thức R-squared để nhận biết mô hình giải thích được bao nhiêu phần trăm biến thiên của dữ liệu.
     \item[-] Công thức RMSE: 
 \begin{equation}
 RMSE = \sqrt{\frac{1}{n} \sum_{i=1}^{n} (y_i - \hat{y}_i)^2}
@@ -91,7 +92,7 @@ R^2 = 1 - \frac{SS_{res}}{SS_{tot}} = 1 - \frac{\sum_{i=1}^{n} (y_i - \hat{y}_i)
     \item Đơn biến:
     \begin{itemize}
         \item[-] Mô hình chỉ sử dụng một đặc trưng duy nhất (GrLivArea).
-    `   \item[-] Bỏ qua các yếu tố quan trọng khác như chất lượng xây dựng (OverallQual), tổng diện tích (TotalSF), vị trí địa lý, tuổi thọ căn nhà, số phòng, ...
+        \item[-] Bỏ qua các yếu tố quan trọng khác như chất lượng xây dựng (OverallQual), tổng diện tích (TotalSF), vị trí địa lý, tuổi thọ căn nhà, số phòng, ...
     \end{itemize}
     \item Giả định tuyến tính:
     \begin{itemize}
