@@ -1,0 +1,2 @@
+LinearRegression - 58,137.54 - 0.5402
+RandomForest - 32,218.65 - 0.8256
