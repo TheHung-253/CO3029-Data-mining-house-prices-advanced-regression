@@ -29,7 +29,7 @@ Thông qua thuộc tính \texttt{feature\_importances\_} của mô hình Random 
 
 Kết quả phân tích cho thấy sự phân hóa rõ rệt:
 \begin{itemize}
-\item \textbf{Chất lượng tổng thể (\texttt{OverallQual}):} Đây là đặc trưng mang tính quyết định lớn nhất, chiếm hơn 48\% mức độ ảnh hưởng đến giá nhà. Điều này cho thấy yếu tố thẩm mỹ, vật liệu hoàn thiện và tình trạng bảo trì đóng vai trò then chốt trong định giá bất động sản.
-\item \textbf{Các yếu tố về diện tích (\texttt{TotalSF}, \texttt{GrLivArea}):} Diện tích sử dụng thực tế (đặc biệt là không gian sống trên mặt đất và tổng diện tích khu vực) là nhóm yếu tố quan trọng thứ hai. Không gian rộng rãi luôn đi kèm với giá trị cơ bản của bất động sản.
+\item \textbf{Biến kết hợp (\texttt{Qual\_x\_TotalSF}) giữa chất lượng tổng thể (\texttt{OverallQual}) và tổng diện tích sử dụng ngôi nhà (\texttt{TotalSF}):} Đây là đặc trưng mang tính quyết định lớn nhất, chiếm hơn 85\% mức độ ảnh hưởng đến giá nhà. Điều này cho thấy yếu tố thẩm mỹ, vật liệu hoàn thiện và tình trạng bảo trì đóng vai trò then chốt trong định giá bất động sản.
+\item \textbf{Các yếu tố về diện tích (\texttt{TotalSF}, \texttt{GrLivArea}):} Diện tích sử dụng thực tế (đặc biệt là không gian sống trên mặt đất và tổng diện tích khu vực) là nhóm yếu tố có ảnh hưởng đáng kể. Không gian rộng rãi thường đi kèm với giá trị cơ bản của bất động sản.
 \item \textbf{Tối ưu nguồn lực dữ liệu:} Hệ thống định giá thực tế có thể dự đoán chính xác giá nhà chỉ bằng cách tập trung vào top 6-10 thông số quan trọng nhất thay vì phải thu thập toàn bộ hơn 80 biến số ban đầu. Việc này giúp tiết kiệm đáng kể chi phí thu thập và xử lý dữ liệu.
 \end{itemize}

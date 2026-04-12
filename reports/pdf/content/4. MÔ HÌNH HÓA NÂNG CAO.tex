@@ -1,91 +1,91 @@
 \clearpage
-\section{Mô hình hóa nâng cao} 
+\section{Mô hình hóa nâng cao}
 \subsection{Lựa chọn kỹ thuật}
 %Giới thiệu thuật toán học máy tập hợp (Ensemble Learning) - Random Forest Regressor đa biến.
 Trong giai đoạn mô hình hóa nâng cao, nhóm lựa chọn Random Forest Regressor – một thuật toán thuộc nhóm Ensemble Learning. Random Forest hoạt động bằng cách xây dựng nhiều cây quyết định (Decision Trees) trên các tập dữ liệu con khác nhau, sau đó kết hợp kết quả dự đoán của chúng để đưa ra giá trị cuối cùng
 \subsubsection{Cơ sở lựa chọn:}
 \begin{itemize}
-    \item[-] \textbf{Khả năng nắm bắt quan hệ phi tuyến tính:} Khác với hồi quy tuyến tính đơn giản, Random Forest có thể mô hình hóa các mối quan hệ phức tạp và phi tuyến tính giữa nhiều đặc trưng và giá nhà.
-    \item[-] \textbf{Giảm thiểu overfitting:} Nhờ cơ chế bootstrap sampling và bagging, Random Forest thường ổn định hơn so với một cây quyết định đơn lẻ.
-    \item[-] \textbf{Khai thác đa biến:} Mô hình cho phép sử dụng nhiều đặc trưng cùng lúc (ví dụ: OverallQual, TotalSF, GrLivArea, các biến log-transform), từ đó tận dụng tối đa thông tin trong dữ liệu.
-    \item[-] \textbf{Phân tích độ quan trọng đặc trưng (Feature Importance):} Random Forest cung cấp thước đo định lượng cho thấy đặc trưng nào ảnh hưởng mạnh nhất đến giá nhà, giúp mô hình vừa chính xác vừa dễ diễn giải.
+  \item[-] \textbf{Khả năng nắm bắt quan hệ phi tuyến tính:} Khác với hồi quy tuyến tính đơn giản, Random Forest có thể mô hình hóa các mối quan hệ phức tạp và phi tuyến tính giữa nhiều đặc trưng và giá nhà.
+  \item[-] \textbf{Giảm thiểu overfitting:} Nhờ cơ chế bootstrap sampling và bagging, Random Forest thường ổn định hơn so với một cây quyết định đơn lẻ.
+  \item[-] \textbf{Khai thác đa biến:} Mô hình cho phép sử dụng nhiều đặc trưng cùng lúc (ví dụ: OverallQual, TotalSF, GrLivArea, các biến log-transform), từ đó tận dụng tối đa thông tin trong dữ liệu.
+  \item[-] \textbf{Phân tích độ quan trọng đặc trưng (Feature Importance):} Random Forest cung cấp thước đo định lượng cho thấy đặc trưng nào ảnh hưởng mạnh nhất đến giá nhà, giúp mô hình vừa chính xác vừa dễ diễn giải.
 \end{itemize}
 \subsubsection{Ý nghĩa học thuật:}
 \begin{itemize}
-    \item[-] Việc lựa chọn Random Forest thể hiện bước chuyển từ mô hình cơ sở đơn giản sang mô hình nâng cao, có khả năng cải thiện đáng kể độ chính xác.
-    \item[-] Đây là một trong những thuật toán phổ biến và mạnh mẽ nhất trong các bài toán dự đoán giá nhà.
+  \item[-] Việc lựa chọn Random Forest thể hiện bước chuyển từ mô hình cơ sở đơn giản sang mô hình nâng cao, có khả năng cải thiện đáng kể độ chính xác.
+  \item[-] Đây là một trong những thuật toán phổ biến và mạnh mẽ nhất trong các bài toán dự đoán giá nhà.
 \end{itemize}
 
 \subsection{Quá trình huấn luyện}
 %Các thiết lập tham số và quá trình fit mô hình.
 \subsubsection{Thiết lập tham số:}
 \begin{itemize}
-    \item[-] Mô hình được khởi tạo với Random Forest Regressor gồm 100 cây quyết định (decision tree) (\verb|n_estimators = 100|).
-    \item[-] Sử dụng \verb|random_state = 42| để đảm bảo tính tái lập kết quả.
-    \item[-] Tham số \verb|n_jobs = -1| cho phép tận dụng toàn bộ lõi CPU để tăng tốc độ huấn luyện.
+  \item[-] Mô hình được khởi tạo với Random Forest Regressor gồm 100 cây quyết định (decision tree) (\verb|n_estimators = 100|).
+  \item[-] Sử dụng \verb|random_state = 42| để đảm bảo tính tái lập kết quả.
+  \item[-] Tham số \verb|n_jobs = -1| cho phép tận dụng toàn bộ lõi CPU để tăng tốc độ huấn luyện.
 \end{itemize}
 \subsubsection{Quá trình huấn luyện:}
 \begin{figure}[H]
-    \centering
-    \includegraphics[width=1\linewidth]{images/baseline_model/Heatmap.png}
-    \caption{Heatmap tương quan giữa các thành phần với SalePrice}
+  \centering
+  \includegraphics[width=1\linewidth]{images/baseline_model/Heatmap.png}
+  \caption{Heatmap tương quan giữa các thành phần với SalePrice}
 \end{figure}
 \begin{enumerate}
-    \item \textbf{Chọn đặc trưng:} Dựa trên phân tích tương quan, nhóm lựa chọn các biến có hệ số tương quan cao với SalePrice như:
+  \item \textbf{Chọn đặc trưng:} Dựa trên phân tích tương quan, nhóm lựa chọn các biến có hệ số tương quan cao với SalePrice như:
     \begin{itemize}
-        \item[-] Qual\_x\_TotalSF (0.82)
-        \item[-] Log\_GrLivArea (0.73)
-        \item[-] Log\_TotalSF (0.81)
-        \item[-] TotalSF (0.78)
-        \item[-] GrLivArea (0.7)
-        \item[-] OverallQual (0.82)
+      \item[-] Qual\_x\_TotalSF (0.82)
+      \item[-] Log\_GrLivArea (0.73)
+      \item[-] Log\_TotalSF (0.81)
+      \item[-] TotalSF (0.78)
+      \item[-] GrLivArea (0.7)
+      \item[-] OverallQual (0.82)
     \end{itemize}
-    \item \textbf{Chia tập dữ liệu:} Sau đó tiến hành tách dữ liệu ra thành Training và Validation set để đưa vào mô hình huấn luyện.
+  \item \textbf{Chia tập dữ liệu:} Sau đó tiến hành tách dữ liệu ra thành Training và Validation set để đưa vào mô hình huấn luyện.
 \end{enumerate}
 \begin{figure}[H]
-    \centering
-    \includegraphics[width=1\linewidth]{images/advanced_model/SplitData.png}
-    \caption{Chia dữ liệu thành training và validation set}
+  \centering
+  \includegraphics[width=1\linewidth]{images/advanced_model/SplitData.png}
+  \caption{Chia dữ liệu thành training và validation set}
 \end{figure}
 
 \begin{enumerate}
-    \item[3]  \textbf{Huấn luyện mô hình:} Fit Random Forest trên tập huấn luyện để học mối quan hệ giữa các đặc trưng và giá nhà.
-    \item[4] \textbf{Dự đoán:} Thực hiện dự đoán trên tập kiểm định, kết quả được chuyển đổi về đơn vị USD thực tế để so sánh với mô hình cơ sở.
+  \item[3]  \textbf{Huấn luyện mô hình:} Fit Random Forest trên tập huấn luyện để học mối quan hệ giữa các đặc trưng và giá nhà.
+  \item[4] \textbf{Dự đoán:} Thực hiện dự đoán trên tập kiểm định, kết quả được chuyển đổi về đơn vị USD thực tế để so sánh với mô hình cơ sở.
 \end{enumerate}
 \begin{itemize}
-    \item[-] RMSE: \$32,201.12
-    \item[-] Kết quả dự đoán trên tập kiểm định cho thấy mô hình Random Forest đã cải thiện đáng kể so với mô hình cơ sở.
+  \item[-] RMSE: \$32,218.65
+  \item[-] Kết quả dự đoán trên tập kiểm định cho thấy mô hình Random Forest đã cải thiện đáng kể so với mô hình cơ sở.
 \end{itemize}
 
 \subsubsection{Phân tích độ quan trọng đặc trưng:}
 Sau khi huấn luyện, nhóm sử dụng thuộc tính feature\_importances\_ để xác định mức độ đóng góp của từng đặc trưng vào mô hình.
 \begin{figure}[H]
-    \centering
-    \includegraphics[width=1\linewidth]{images/advanced_model/feature_importances.png}
-    \caption{Biểu đồ độ quan trọng của các đặc trưng trong Random Forest}
+  \centering
+  \includegraphics[width=1\linewidth]{images/advanced_model/feature_importances.png}
+  \caption{Biểu đồ độ quan trọng của các đặc trưng trong Random Forest}
 \end{figure}
 \begin{itemize}
-    \item[-] Biểu đồ độ quan trọng cho thấy OverallQual (chất lượng tổng thể) và TotalSF (tổng diện tích) là hai yếu tố chi phối mạnh nhất đến giá nhà.
-    \item[-] GrLivArea vẫn có vai trò quan trọng, nhưng không còn là đặc trưng mạnh nhất như trong mô hình cơ sở.
-    \item[-] Các biến đã qua xử lý như Log\_TotalSF và Qual\_x\_TotalSF cũng đóng góp đáng kể, chứng minh rằng việc tiền xử lý và tạo đặc trưng mới giúp mô hình nâng cao nắm bắt dữ liệu tốt hơn.
+  \item[-] Các biến đã qua phép xử lý như Log\_TotalSF và Qual\_x\_TotalSF, đặc biệt là biến Qual\_x\_TotalSF có đóng góp mạnh nhất (85\%), chứng minh rằng việc tiền xử lý và tạo đặc trưng mới giúp mô hình nâng cao nắm bắt dữ liệu tốt hơn.
+  \item[-] Biểu đồ độ quan trọng cho thấy OverallQual (chất lượng tổng thể) và TotalSF (tổng diện tích) là hai yếu tố ít chi phối đến giá nhà.
+  \item[-] GrLivArea vẫn có vai trò quan trọng, nhưng không còn là đặc trưng mạnh nhất như trong mô hình cơ sở.
 \end{itemize}
 
 \subsection{Kết quả đánh giá mô hình nâng cao}
 \begin{figure}[H]
-    \centering
-    \includegraphics[width=1\linewidth]{images/advanced_model/Result.png}
-    \caption{So sánh giá trị dự đoán và giá trị thực tế}
+  \centering
+  \includegraphics[width=1\linewidth]{images/advanced_model/Result.png}
+  \caption{So sánh giá trị dự đoán và giá trị thực tế}
 \end{figure}
 \subsubsection{Kết quả đánh giá:}
 \begin{itemize}
-    \item[-] RMSE của RandomForest: \$32,201.12
-    \item[-] RMSE của Baseline (Linear Regression): \$58,137.54
-    \item[-] Mô hình RandomForest đã giảm \$26,000 so với mô hình cơ sở.
+  \item[-] RMSE của RandomForest: \$32,218.65
+  \item[-] RMSE của Baseline (Linear Regression): \$58,137.54
+  \item[-] Mô hình RandomForest đã giảm \$25,919 so với mô hình cơ sở.
 \end{itemize}
 \subsubsection{Nhận xét:}
 \begin{itemize}
-    \item[-] Scatter plot minh họa rằng các điểm dự đoán nằm gần đường chéo (Actual = Predicted), chứng tỏ mô hình có độ chính xác cao hơn và sai số giảm.
-    \item[-] Việc giảm RMSE từ ~58k xuống ~32k là một bước nhảy lớn, khẳng định hiệu quả của việc kết hợp nhiều đặc trưng và sử dụng mô hình phi tuyến tính
-    \item[-] Phân tích độ quan trọng đặc trưng cho thấy OverallQual và TotalSF là yếu tố chi phối mạnh nhất đến giá nhà, trong khi GrLivArea chỉ đóng vai trò bổ sung.
-    \item[-] Như vậy, mô hình nâng cao không chỉ cải thiện hiệu suất dự đoán mà còn mang lại insight thực tế: chất lượng xây dựng và tổng diện tích là yếu tố quyết định giá trị bất động sản.
+  \item[-] Scatter plot minh họa rằng các điểm dự đoán nằm gần đường chéo (Actual = Predicted), chứng tỏ mô hình có độ chính xác cao hơn và sai số giảm.
+  \item[-] Việc giảm RMSE từ khoảng 58k xuống  còn khoảng 32k là một bước nhảy lớn, khẳng định hiệu quả của việc kết hợp nhiều đặc trưng và sử dụng mô hình phi tuyến tính
+  \item[-] Phân tích độ quan trọng đặc trưng cho thấy OverallQual và TotalSF là yếu tố chi phối mạnh nhất đến giá nhà, trong khi GrLivArea chỉ đóng vai trò bổ sung.
+  \item[-] Như vậy, mô hình nâng cao không chỉ cải thiện hiệu suất dự đoán mà còn mang lại insight thực tế: chất lượng xây dựng và tổng diện tích là yếu tố quyết định giá trị bất động sản.
 \end{itemize}
